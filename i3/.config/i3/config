@@ -17,10 +17,9 @@ set $mod Mod4
 #Apply dark GTK theme
 xsettingsd &
 
-
 #Picom and walpaper
 exec --no-startup-id picom
-exec --no-startup-id feh --bg-scale ~/backgrounds/nice-blue-background.png
+exec --no-startup-id feh --bg-scale ~/Pictures/Backgrounds/walpaper.jpg
 exec --no-startup-id xrdb -merge ~/.Xresources
 exec_always --no-startup-id setxkbmap -option ctrl:nocaps
 
