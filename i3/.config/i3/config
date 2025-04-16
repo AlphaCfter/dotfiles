@@ -15,7 +15,7 @@ set $mod Mod4
 # set $mod Mod1
 
 #Apply dark GTK theme
-xsettingsd &
+exec --no-startup-id xsettingsd &
 
 #Picom and walpaper
 exec --no-startup-id picom
