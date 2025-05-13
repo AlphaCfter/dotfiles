@@ -15,13 +15,13 @@ set $mod Mod4
 # set $mod Mod1
 
 #Apply dark GTK theme
-exec --no-startup-id xsettingsd &
+exec_always --no-startup-id xsettingsd &
 
 #Picom and walpaper
 exec --no-startup-id picom
 exec --no-startup-id feh --bg-scale ~/Pictures/Backgrounds/walpaper.jpg
 exec --no-startup-id xrdb -merge ~/.Xresources
-exec_always --no-startup-id setxkbmap -option ctrl:nocaps
+exec_always -no-startup-id setxkbmap -option ctrl:nocaps
 
 # kill any hanging polybar processes
 exec_always killall polybar
@@ -47,6 +47,10 @@ bindsym Ctrl+Escape exec xkill
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
 #font pango:DejaVu Sans Mono 8
 
+# Xidlehook service to prevent screen from sleeping based on few paramenters
+exec_always --no-startup-id xidlehook --not-when-fullscreen --not-when-audio --timer 900 'i3lock' ''
+
+
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 exec --no-startup-id dex --autostart --environment i3
@@ -56,7 +60,9 @@ exec --no-startup-id dex --autostart --environment i3
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+
+# Uncommented out the xss-lock which sleeps the laptop randomly
+# exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
